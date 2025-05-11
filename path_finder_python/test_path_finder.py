@@ -1,5 +1,6 @@
 import pytest
 from main import a_estrela, Pos
+from mazegen import mazegen
 
 def test_caminho_simples():
     labirinto = [['S', '0', 'E']]
@@ -26,3 +27,8 @@ def test_labirinto_vazio():
     labirinto = []
     caminho = a_estrela(labirinto)
     assert caminho is None
+
+def test_labirinto_gerado():
+    labirinto = mazegen()
+    caminho = a_estrela(labirinto)
+    assert caminho is not None

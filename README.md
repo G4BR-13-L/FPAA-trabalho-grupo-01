@@ -1,5 +1,5 @@
 
-# 1. FPAA-trabalho-grupo-01 - A* Path Finder
+# FPAA-trabalho-grupo-01 - A* Path Finder
 
 ## GRUPO
 - Gabriel Victor Couto Martins de Paula

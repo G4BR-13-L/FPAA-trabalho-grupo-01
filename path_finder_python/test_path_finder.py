@@ -1,45 +1,28 @@
 import pytest
-from main import hamiltonian_path
+from main import a_estrela, Pos
 
 def test_caminho_simples():
-    graph = [
-        [0, 1, 1],
-        [1, 0, 1],
-        [1, 1, 0]
-    ]
-    path = hamiltonian_path(graph)
-    assert path is not None
-    assert sorted(path) == [0, 1, 2]
+    labirinto = [['S', '0', 'E']]
+    caminho = a_estrela(labirinto)
+    assert caminho is not None
+    assert caminho[0] == Pos(0, 0)
+    assert caminho[-1] == Pos(0, 2)
 
 def test_sem_caminho():
-    graph = [
-        [0, 1, 0],
-        [1, 0, 0],
-        [0, 0, 0]
-    ]
-    assert hamiltonian_path(graph) is None
+    labirinto = [['S', '1', 'E']]
+    caminho = a_estrela(labirinto)
+    assert caminho is None
 
-def test_grafo_direcionado_com_caminho():
-    graph = [
-        [0, 1, 0],
-        [0, 0, 1],
-        [0, 0, 0]
-    ]
-    path = hamiltonian_path(graph)
-    assert path is not None
-    assert sorted(path) == [0, 1, 2]
+def test_inicio_igual_fim():
+    labirinto1 = [['E']]
+    caminho = a_estrela(labirinto1)
+    assert caminho is None
 
-def test_grafo_com_um_vertice():
-    graph = [
-        [0]
-    ]
-    assert hamiltonian_path(graph) == [0]
+    labirinto2 = [['S']]
+    caminho = a_estrela(labirinto2)
+    assert caminho is None
 
-def test_grafo_com_dois_vertices_conectados():
-    graph = [
-        [0, 1],
-        [1, 0]
-    ]
-    path = hamiltonian_path(graph)
-    assert path is not None
-    assert sorted(path) == [0, 1]
+def test_labirinto_vazio():
+    labirinto = []
+    caminho = a_estrela(labirinto)
+    assert caminho is None
